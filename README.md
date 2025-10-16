@@ -1,0 +1,75 @@
+# Databricks Data Engineer Associate Certification Lab
+
+Follow me [on Linkedin](https://www.linkedin.com/in/jrlasak/) for useful Databricks projects and tips. Training materials are also available on my website: [DataEngineer.wiki](http://dataengineer.wiki/)
+
+## High-Level Overview
+
+This lab provides hands-on practice to prepare for the Databricks Certified Data Engineer Associate exam. You will build a production-grade, end-to-end data pipeline using real-world scenarios and datasets. The exercises are designed to be completed within the Databricks Free Community Edition, allowing you to develop practical skills without any cost.
+
+The lab covers the entire data engineering lifecycle, including:
+
+- Ingesting raw data from various sources using Auto Loader.
+- Implementing the Medallion Architecture (Bronze, Silver, Gold layers).
+- Performing data transformations and quality checks with Delta Live Tables.
+- Orchestrating workflows with Databricks Jobs.
+- Managing data governance using Unity Catalog.
+
+## How It Prepares You for the Exam
+
+This lab is structured to cover the key topics outlined in [the official Databricks Data Engineer Associate exam info](https://www.databricks.com/learn/certification/data-engineer-associate). By completing the notebooks, you will gain practical experience in the following areas:
+
+### Section 1: Databricks Intelligence Platform
+
+- **What you'll practice:** Enabling features that simplify data layout decisions, understanding the value of the Data Intelligence Platform, and identifying the applicable compute for specific use cases.
+
+### Section 2: Development and Ingestion
+
+- **What you'll practice:** Using Databricks Connect, leveraging Notebooks functionality, working with Auto Loader from various sources, and using built-in debugging tools.
+
+### Section 3: Data Processing & Transformations
+
+- **What you'll practice:** Implementing the three layers of the Medallion Architecture, configuring clusters for optimal performance, using Delta Live Tables (DLT) for ETL, and computing complex aggregations with PySpark.
+
+### Section 4: Productionizing Data Pipelines
+
+- **What you'll practice:** Understanding Databricks Asset Bundles (DABs), deploying and managing workflows, and using serverless compute.
+
+### Section 5: Data Governance & Quality
+
+- **What you'll practice:** Differentiating between managed and external tables, managing permissions in Unity Catalog (UC), using data lineage, and sharing data with Delta Sharing.
+
+## How to Start
+
+Follow these three simple steps to begin:
+
+### Step 1: Get Databricks Free Edition
+
+1. Go to [databricks.com/learn/free-edition](https://www.databricks.com/learn/free-edition).
+2. Sign up for the **Free Edition**. This gives you access to all the necessary tools, including serverless compute and Unity Catalog.
+
+### Step 2: Import This Lab into Databricks
+
+1. In your Databricks workspace, navigate to **Workspace** > **Repos**.
+2. Click **Add Repo**.
+3. For the Git repository URL, paste: `https://github.com/jrlasak/databricks_data_engineer_associate_cert_prep`.
+4. Click **Create Repo**.
+
+### Step 3: Begin the Lab
+
+1. Once the repo is cloned, navigate to the `notebooks/` directory.
+2. Open and run the `00_Setup_Environment.py` notebook to configure your workspace.
+3. Proceed through the notebooks in numerical order, starting with `01_Environment_Setup_Unity_Catalog.py`.
+
+Each notebook contains exercises marked with `TODO` and corresponding solutions for you to check your work. Good luck!
+
+---
+
+## Prerequisites and Requirements
+
+**Workspace Requirements:**
+- Full Databricks workspace (trial, paid, or academic) with Unity Catalog enabled
+- Free Community Edition does NOT support Unity Catalog
+
+**Important Setup Step:**
+
+Notebook 01 includes detailed instructions for setting up security groups required for governance exercises (notebooks 01 and 07). Follow the step-by-step guide in that notebook to create the required groups via the Admin Console before proceeding with later notebooks.
