@@ -8,11 +8,11 @@ This lab provides hands-on practice to prepare for the Databricks Certified Data
 
 The lab covers the entire data engineering lifecycle, including:
 
-- Ingesting raw data from various sources using Auto Loader.
+- Ingesting raw data from various sources using Auto Loader and COPY INTO.
 - Implementing the Medallion Architecture (Bronze, Silver, Gold layers).
-- Performing data transformations and quality checks with Delta Live Tables.
-- Orchestrating workflows with Databricks Jobs.
-- Managing data governance using Unity Catalog.
+- Performing data transformations, quality checks, and implementing SCD Type 2.
+- Orchestrating workflows with Databricks Jobs and multi-task dependencies.
+- Managing data governance using Unity Catalog with role-based access control.
 
 ## How It Prepares You for the Exam
 
@@ -24,19 +24,19 @@ This lab is structured to cover the key topics outlined in [the official Databri
 
 ### Section 2: Development and Ingestion
 
-- **What you'll practice:** Using Databricks Connect, leveraging Notebooks functionality, working with Auto Loader from various sources, and using built-in debugging tools.
+- **What you'll practice:** Leveraging Notebooks functionality, working with Auto Loader from various sources (JSON, CSV), using COPY INTO for batch incremental loads, and handling schema evolution.
 
 ### Section 3: Data Processing & Transformations
 
-- **What you'll practice:** Implementing the three layers of the Medallion Architecture, configuring clusters for optimal performance, using Delta Live Tables (DLT) for ETL, and computing complex aggregations with PySpark.
+- **What you'll practice:** Implementing the three layers of the Medallion Architecture (Bronze, Silver, Gold), performing data quality transformations, implementing Slowly Changing Dimensions (SCD Type 2), and computing complex aggregations with PySpark window functions.
 
 ### Section 4: Productionizing Data Pipelines
 
-- **What you'll practice:** Understanding Databricks Asset Bundles (DABs), deploying and managing workflows, and using serverless compute.
+- **What you'll practice:** Creating and configuring Databricks Jobs, implementing multi-task workflows with dependencies, using job parameters with widgets, implementing error handling and retry logic, and using serverless compute.
 
 ### Section 5: Data Governance & Quality
 
-- **What you'll practice:** Differentiating between managed and external tables, managing permissions in Unity Catalog (UC), using data lineage, and sharing data with Delta Sharing.
+- **What you'll practice:** Understanding Unity Catalog's three-level namespace (catalog.schema.table), creating and managing catalogs, schemas, and volumes, creating managed tables, implementing access control with GRANT and REVOKE statements, and data quality validation patterns.
 
 ## How to Start
 
@@ -61,15 +61,3 @@ Follow these three simple steps to begin:
 3. Proceed through the notebooks in numerical order, starting with `01_Environment_Setup_Unity_Catalog.py`.
 
 Each notebook contains exercises marked with `TODO` and corresponding solutions for you to check your work. Good luck!
-
----
-
-## Prerequisites and Requirements
-
-**Workspace Requirements:**
-- Full Databricks workspace (trial, paid, or academic) with Unity Catalog enabled
-- Free Community Edition does NOT support Unity Catalog
-
-**Important Setup Step:**
-
-Notebook 01 includes detailed instructions for setting up security groups required for governance exercises (notebooks 01 and 07). Follow the step-by-step guide in that notebook to create the required groups via the Admin Console before proceeding with later notebooks.
