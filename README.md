@@ -2,6 +2,8 @@
 
 Follow me [on Linkedin](https://www.linkedin.com/in/jrlasak/) for useful Databricks projects and tips. Training materials are also available on my website: [DataEngineer.wiki](http://dataengineer.wiki/)
 
+> **Looking for more practice?** Check out my other hands-on Databricks labs covering Delta Live Tables, table optimization, and more at [dataengineer.wiki/projects](https://dataengineer.wiki/projects/).
+
 ## High-Level Overview
 
 This lab provides hands-on practice to prepare for the Databricks Certified Data Engineer Associate exam. You will build a production-grade, end-to-end data pipeline using real-world scenarios and datasets. The exercises are designed to be completed within the Databricks Free Community Edition, allowing you to develop practical skills without any cost.
@@ -37,6 +39,10 @@ This lab is structured to cover the key topics outlined in [the official Databri
 ### Section 5: Data Governance & Quality
 
 - **What you'll practice:** Understanding Unity Catalog's three-level namespace (catalog.schema.table), creating and managing catalogs, schemas, and volumes, creating managed tables, implementing access control with GRANT and REVOKE statements, and data quality validation patterns.
+
+## Additional Exam Topics
+
+This lab focuses on core data engineering workflows. If you want to practice additional exam topics such as **Delta Live Tables (DLT) pipelines** or **Delta table optimization techniques**, check out my other hands-on labs at [dataengineer.wiki/projects](https://dataengineer.wiki/projects/).
 
 ## How to Start
 
