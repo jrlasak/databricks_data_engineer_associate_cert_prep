@@ -340,6 +340,7 @@ print("✅ Granted full access to data_engineers on bronze schema")
 # MAGIC GRANT privilege ON object_type object_name TO `principal`
 # MAGIC ```
 # MAGIC **Hint**: Use `{CATALOG_NAME}` and `{GOLD_SCHEMA}` variables
+# MAGIC
 # MAGIC **Note**: We're skipping USAGE privilege due to metastore v1.0 limitations.
 
 # COMMAND ----------

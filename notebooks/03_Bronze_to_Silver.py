@@ -34,6 +34,7 @@
 # MAGIC - **Quality**: Highly curated, denormalized
 # MAGIC - **Schema**: Optimized for query performance
 # MAGIC - **Use case**: BI reports, dashboards, KPIs
+# MAGIC
 # MAGIC **This notebook**: Bronze → Silver transformations
 
 # COMMAND ----------
@@ -70,6 +71,7 @@ from delta.tables import DeltaTable
 # MAGIC - **Standardization**: Consistent formats for email, phone, names
 # MAGIC - **Validation**: Valid email patterns, phone numbers
 # MAGIC - **Null handling**: Business rules for required fields
+# MAGIC
 # MAGIC Let's start by examining the bronze data.
 
 # COMMAND ----------
@@ -113,6 +115,7 @@ if duplicate_count > 0:
 # MAGIC | **Most recent** | Keep row with latest timestamp |
 # MAGIC | **Most complete** | Keep row with fewest nulls |
 # MAGIC | **Explicit priority** | Use a priority column |
+# MAGIC
 # MAGIC **Common pattern**: Use window functions with `row_number()`
 
 # COMMAND ----------
@@ -128,6 +131,7 @@ if duplicate_count > 0:
 # MAGIC - Keep only rows where `row_num == 1`
 # MAGIC - Drop the helper column
 # MAGIC - Store result in `customers_deduped`
+# MAGIC
 # MAGIC **Pattern:**
 # MAGIC ```python
 # MAGIC window_spec = Window.partitionBy("col").orderBy(F.col("col").desc())
@@ -184,6 +188,7 @@ print(f"After deduplication: {customers_deduped.count():,}")
 # MAGIC - `is_valid_email`: Check regex pattern
 # MAGIC - `is_valid_phone`: Check length == 10
 # MAGIC - `data_quality_score`: Count of valid fields (0-4)
+# MAGIC
 # MAGIC **Functions you'll need:**
 # MAGIC ```python
 # MAGIC F.lower(), F.trim(), F.initcap()
@@ -313,6 +318,7 @@ print(f"✅ Created Silver table: {CUSTOMERS_SILVER_TABLE}")
 # MAGIC - **Format fixes**: Standardize names, categories, SKUs
 # MAGIC - **Price validation**: Ensure positive, reasonable prices
 # MAGIC - **Calculated fields**: Profit margins
+# MAGIC
 # MAGIC Let's examine the data first.
 
 # COMMAND ----------
@@ -354,6 +360,7 @@ products_bronze.select(
 # MAGIC - `profit_margin`: ((price - cost) / price) * 100
 # MAGIC **Part 4 - Filter:**
 # MAGIC - Must have product_id, product_name, and valid price
+# MAGIC
 # MAGIC **Hint**: Follow the customer cleaning pattern.
 
 # COMMAND ----------
@@ -547,10 +554,11 @@ products_dim = spark.table(PRODUCTS_SILVER_TABLE)
 # MAGIC - Select: product_id, product_name, category, subcategory, price
 # MAGIC 3. Create final select with:
 # MAGIC - All key fields
-# MAGIC - `customer_name`: Concatenate first + last name
-# MAGIC - `subtotal`: quantity * unit_price
+# MAGIC   - `customer_name`: Concatenate first + last name
+# MAGIC   - `subtotal`: quantity * unit_price
 # MAGIC - Other relevant fields
-# MAGIC - `is_valid_sale`: Check all required fields exist
+# MAGIC   - `is_valid_sale`: Check all required fields exist
+# MAGIC
 # MAGIC **Hint**: Chain the joins, then select columns.
 
 # COMMAND ----------
@@ -777,6 +785,7 @@ display(updates)
 # MAGIC **Step 2**: Insert new versions
 # MAGIC - Find which customers changed (join with closed records)
 # MAGIC - Append new rows with updated data
+# MAGIC
 # MAGIC **Pattern:**
 # MAGIC ```python
 # MAGIC target_table.alias("target").merge(
@@ -977,25 +986,30 @@ display(spark.sql(f"""
 # MAGIC - Bronze: Raw ingestion with no transformations
 # MAGIC - Silver: Cleaned, validated, conformed data
 # MAGIC - Gold: Business-level aggregations (next notebook)
+# MAGIC
 # MAGIC **2. Data Cleaning Techniques**
 # MAGIC - Deduplication with window functions
 # MAGIC - Standardization (case, trim, format)
 # MAGIC - Validation (regex, ranges, business rules)
 # MAGIC - Quality scoring
+# MAGIC
 # MAGIC **3. Stream Processing**
 # MAGIC - Stream-static joins
 # MAGIC - Enrichment with dimension tables
 # MAGIC - Calculated fields
 # MAGIC - Checkpointing for streaming writes
+# MAGIC
 # MAGIC **4. SCD Type 2**
 # MAGIC - Effective date ranges
 # MAGIC - Current record flags
 # MAGIC - MERGE pattern for updates
 # MAGIC - Historical tracking
+# MAGIC
 # MAGIC **5. Data Quality**
 # MAGIC - Validation flags
 # MAGIC - Quality metrics
 # MAGIC - Monitoring dashboards
+# MAGIC
 # MAGIC ### ✅ Exam Checklist
 # MAGIC Can you:
 # MAGIC - [ ] Implement deduplication with window functions?

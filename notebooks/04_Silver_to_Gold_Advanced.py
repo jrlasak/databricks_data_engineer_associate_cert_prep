@@ -1,8 +1,11 @@
 # Databricks notebook source
 # MAGIC %md
 # MAGIC #Notebook 04: Silver to Gold - Advanced Transformations
+# MAGIC
 # MAGIC **Exam Coverage**: Section 3 (Incremental Data Processing)
+# MAGIC
 # MAGIC **Duration**: 60-75 minutes
+# MAGIC
 # MAGIC ---
 # MAGIC ## Learning Objectives
 # MAGIC By the end of this notebook, you will be able to:
@@ -91,19 +94,21 @@ sales_silver.printSchema()
 # MAGIC 1. Add `sale_date` column (convert `order_timestamp` to date)
 # MAGIC 2. Group by `sale_date` and `category`
 # MAGIC 3. Calculate aggregations:
-# MAGIC - `total_revenue`: Sum of total_amount
-# MAGIC - `order_count`: Count of order_id
-# MAGIC - `unique_customers`: Count distinct customer_id
-# MAGIC - `avg_order_value`: Average of total_amount
-# MAGIC - `total_units_sold`: Sum of quantity
+# MAGIC   - `total_revenue`: Sum of total_amount
+# MAGIC   - `order_count`: Count of order_id
+# MAGIC   - `unique_customers`: Count distinct customer_id
+# MAGIC   - `avg_order_value`: Average of total_amount
+# MAGIC   - `total_units_sold`: Sum of quantity
 # MAGIC 4. Add calculated columns:
-# MAGIC - `revenue_per_customer`: total_revenue / unique_customers
-# MAGIC - `units_per_order`: total_units_sold / order_count
+# MAGIC   - `revenue_per_customer`: total_revenue / unique_customers
+# MAGIC   - `units_per_order`: total_units_sold / order_count
+# MAGIC
 # MAGIC **Functions needed:**
 # MAGIC ```python
 # MAGIC F.to_date("timestamp_col")
 # MAGIC F.sum(), F.count(), F.countDistinct(), F.avg()
 # MAGIC ```
+# MAGIC
 # MAGIC **Hint**: Use `.withColumn()` to add sale_date, then `.groupBy().agg()`
 
 # COMMAND ----------
@@ -162,6 +167,7 @@ display(daily_sales_summary.orderBy("sale_date", "category"))
 # MAGIC ---
 # MAGIC ### 🎯 EXERCISE 2: Add Rolling Window Calculations
 # MAGIC **Your task**: Calculate 7-day and 30-day rolling averages for trend analysis.
+# MAGIC
 # MAGIC **Requirements:**
 # MAGIC 1. Create window specs:
 # MAGIC - 7-day: Partition by category, order by sale_date, rows -6 to 0
@@ -241,7 +247,9 @@ print(f"✅ Created Gold table: {DAILY_SALES_SUMMARY_TABLE}")
 # MAGIC | **Recency** | How recently did they buy? | 1-5 (5 = most recent) |
 # MAGIC | **Frequency** | How often do they buy? | 1-5 (5 = most frequent) |
 # MAGIC | **Monetary** | How much do they spend? | 1-5 (5 = highest spend) |
+# MAGIC
 # MAGIC **Combined RFM score**: 3-15 (sum of R+F+M)
+# MAGIC
 # MAGIC ### Customer Segments
 # MAGIC - **Champions** (13-15): Best customers
 # MAGIC - **Loyal** (11-12): Regular buyers
@@ -256,6 +264,7 @@ print(f"✅ Created Gold table: {DAILY_SALES_SUMMARY_TABLE}")
 # MAGIC ---
 # MAGIC ### 🎯 EXERCISE 3: Calculate Customer Lifetime Value
 # MAGIC **Your task**: Aggregate customer purchase history and calculate time-based metrics.
+# MAGIC
 # MAGIC **Part 1 - Aggregations:**
 # MAGIC Group by customer and calculate:
 # MAGIC - `total_spend`: Sum of total_amount
@@ -265,6 +274,7 @@ print(f"✅ Created Gold table: {DAILY_SALES_SUMMARY_TABLE}")
 # MAGIC - `last_purchase_date`: Max of order_timestamp
 # MAGIC - `total_items_purchased`: Sum of quantity
 # MAGIC - `categories_purchased`: Count distinct category
+# MAGIC
 # MAGIC **Part 2 - Time Metrics:**
 # MAGIC Add calculated columns:
 # MAGIC - `days_since_first_purchase`: Days between first purchase and today
@@ -338,6 +348,7 @@ display(customer_ltv.orderBy(F.desc("total_spend"))).limit(20)
 # MAGIC ---
 # MAGIC ### 🎯 EXERCISE 4: Calculate RFM Scores and Segments
 # MAGIC **Your task**: Create RFM scores using ntile() and assign segments.
+# MAGIC
 # MAGIC **Part 1 - RFM Scores:**
 # MAGIC Use `F.ntile(5)` to create 5 buckets (quintiles):
 # MAGIC - `recency_score`: REVERSE of days_since_last_purchase (lower days = better)
@@ -347,14 +358,16 @@ display(customer_ltv.orderBy(F.desc("total_spend"))).limit(20)
 # MAGIC - `monetary_score`: Based on total_spend (higher = better)
 # MAGIC - Use: `F.ntile(5).over(Window.orderBy("total_spend"))`
 # MAGIC - `rfm_score`: Sum of R + F + M
+# MAGIC
 # MAGIC **Part 2 - Segments:**
 # MAGIC Create `customer_segment` based on RFM score:
-# MAGIC - >= 13: Champions
-# MAGIC - >= 11: Loyal Customers
-# MAGIC - >= 9: Potential Loyalists
-# MAGIC - >= 7: At Risk
-# MAGIC - >= 5: Hibernating
-# MAGIC - else: Lost
+# MAGIC - '>= 13': Champions
+# MAGIC - '>= 11': Loyal Customers
+# MAGIC - '>= 9': Potential Loyalists
+# MAGIC - '>= 7': At Risk
+# MAGIC - '>= 5': Hibernating
+# MAGIC - 'else': Lost
+# MAGIC
 # MAGIC **Hint**: `ntile(5)` splits data into 5 equal-sized buckets.
 
 # COMMAND ----------
@@ -502,6 +515,7 @@ display(product_performance.orderBy(F.desc("total_revenue")).limit(20))
 # MAGIC - `category_total_revenue`: Sum of revenue within category
 # MAGIC - `market_share_pct`: (product revenue / category total) * 100
 # MAGIC - `cumulative_market_share`: Running sum of market_share_pct
+# MAGIC
 # MAGIC **Patterns:**
 # MAGIC ```python
 # MAGIC # Ranking

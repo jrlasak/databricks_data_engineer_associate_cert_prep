@@ -286,6 +286,7 @@ display(dbutils.fs.ls(PRODUCTS_LANDING_PATH))
 # MAGIC - Schema evolution mode: "addNewColumns"
 # MAGIC - CSV header option: "true"
 # MAGIC - Load from: `PRODUCTS_LANDING_PATH`
+# MAGIC
 # MAGIC **CSV-specific options:**
 # MAGIC ```python
 # MAGIC .option("cloudFiles.format", "csv")
@@ -361,7 +362,9 @@ display(spark.table(PRODUCTS_BRONZE_TABLE).limit(10))
 # MAGIC | `processingTime='10 seconds'` | Trigger every 10 seconds | Near real-time |
 # MAGIC | `once=True` | Process once and stop (deprecated) | Use availableNow instead |
 # MAGIC | No trigger | Continuous processing | True streaming |
+# MAGIC
 # MAGIC **For production**: Use `processingTime` for near real-time or no trigger for continuous.
+# MAGIC
 # MAGIC **For this lab**: We use `availableNow=True` to avoid long-running streams.
 
 # COMMAND ----------

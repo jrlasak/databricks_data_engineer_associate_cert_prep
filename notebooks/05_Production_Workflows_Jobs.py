@@ -3,7 +3,9 @@
 # MAGIC # Notebook 06: Production Workflows & Jobs
 # MAGIC
 # MAGIC **Exam Coverage**: Section 4 (Production Pipelines)
+# MAGIC
 # MAGIC **Duration**: 45-60 minutes
+# MAGIC
 # MAGIC ---
 # MAGIC ## Learning Objectives
 # MAGIC By the end of this notebook, you will be able to:
@@ -267,6 +269,7 @@ print(f"\nValidation Result: {validation_result}")
 # MAGIC 4. On exception:
 # MAGIC - If retries remaining: print error, retry
 # MAGIC - If max retries reached: return `{"status": "FAILED", "task": task_name, "error": ...}`
+# MAGIC
 # MAGIC **Hint**: Use a while loop and track attempt count.
 
 # COMMAND ----------
@@ -492,38 +495,47 @@ except:
 # MAGIC ## Section 7: Troubleshooting Common Issues
 # MAGIC ### Issue 1: Task Failure
 # MAGIC **Symptoms**: Task shows as failed
+# MAGIC
 # MAGIC **Diagnosis:**
 # MAGIC 1. Check task logs for error messages
 # MAGIC 2. Review Spark UI for details
 # MAGIC 3. Verify cluster resources
+# MAGIC
+# MAGIC
 # MAGIC **Solutions:**
 # MAGIC - Add try-except error handling
 # MAGIC - Implement retry logic
 # MAGIC - Increase cluster size
 # MAGIC ### Issue 2: Task Timeout
 # MAGIC **Symptoms**: Task runs indefinitely
+# MAGIC
 # MAGIC **Diagnosis:**
 # MAGIC 1. Check for never-terminating streams
 # MAGIC 2. Look for blocking operations
 # MAGIC 3. Review for cartesian products
+# MAGIC
 # MAGIC **Solutions:**
 # MAGIC - Add timeout configurations
 # MAGIC - Use `trigger(availableNow=True)`
 # MAGIC - Optimize queries with filters
 # MAGIC ### Issue 3: Parameter Passing
 # MAGIC **Symptoms**: Widget values not received
+# MAGIC
 # MAGIC **Diagnosis:**
 # MAGIC 1. Verify widget names match parameters
 # MAGIC 2. Check for typos
+# MAGIC
 # MAGIC **Solutions:**
 # MAGIC - Use consistent naming
 # MAGIC - Add default values
 # MAGIC - Log parameters at task start
 # MAGIC ### Issue 4: Dependency Failures
 # MAGIC **Symptoms**: Downstream tasks fail
+# MAGIC
 # MAGIC **Diagnosis:**
 # MAGIC 1. Check task dependencies
 # MAGIC 2. Review upstream exit codes
+# MAGIC
 # MAGIC **Solutions:**
 # MAGIC - Configure conditional dependencies
 # MAGIC - Add data validation
@@ -573,30 +585,37 @@ except:
 # MAGIC %md
 # MAGIC ## Section 9: Summary and Checkpoint
 # MAGIC ### 🎯 Key Concepts Covered
+# MAGIC
 # MAGIC **1. Databricks Jobs**
 # MAGIC - Multi-task workflows
 # MAGIC - Task dependencies (DAG)
 # MAGIC - Job vs all-purpose clusters
+# MAGIC
 # MAGIC **2. Job Parameters**
 # MAGIC - Widget creation and usage
 # MAGIC - Parameter passing between tasks
 # MAGIC - Environment-specific config
+# MAGIC
 # MAGIC **3. Error Handling**
 # MAGIC - Try-except patterns
 # MAGIC - Retry logic
 # MAGIC - `dbutils.notebook.exit()` for task status
+# MAGIC
 # MAGIC **4. Job Configuration**
 # MAGIC - UI-based creation
 # MAGIC - Task dependencies
 # MAGIC - Scheduling and triggers
+# MAGIC
 # MAGIC **5. Monitoring**
 # MAGIC - Run details and logs
 # MAGIC - Common failure patterns
 # MAGIC - Debugging techniques
+# MAGIC
 # MAGIC **6. Free Edition Limits**
 # MAGIC - 5 task maximum
 # MAGIC - No job clusters
 # MAGIC - Limited scheduling
+# MAGIC
 # MAGIC ### ✅ Exam Checklist
 # MAGIC Can you:
 # MAGIC - [ ] Create widgets and read parameter values?
@@ -614,12 +633,7 @@ except:
 # MAGIC 4. ✅ Configure dependencies
 # MAGIC 5. ✅ Add parameters and schedule
 # MAGIC 6. ✅ Run and monitor
-# MAGIC **Notebook 07** covers:
-# MAGIC - Databricks Asset Bundles (DAB)
-# MAGIC - Infrastructure as Code
-# MAGIC - YAML-based job definitions
-# MAGIC - Deployment workflows
-# MAGIC ---
+# MAGIC
 # MAGIC **🎉 Notebook Complete!**
 # MAGIC You've learned production job orchestration. Create your multi-task workflow in the UI to see it in action!
 

@@ -116,6 +116,7 @@ print("="*70)
 # MAGIC %md
 # MAGIC # ## Generate Synthetic Data
 # MAGIC Initialize the landing volumes with synthetic e-commerce data. This step creates realistic customer, product, sales, and event data with intentional quality issues for learning purposes.
+# MAGIC
 # MAGIC **What will be generated:**
 # MAGIC - Customer data (JSON format)
 # MAGIC - Product data (CSV format)
