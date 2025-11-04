@@ -1,11 +1,11 @@
 # Databricks Data Engineer Associate Certification Lab
 
-Follow me [on LinkedIn](https://www.linkedin.com/in/jrlasak/) for useful Databricks projects and tips. Training materials are also available on my website: [DataEngineer.wiki](http://dataengineer.wiki/)
+## Connect with me:
 
-## Quick Links
-
-> **Looking for more practice?**  
-> Check out my other hands-on Databricks labs covering Delta Live Tables, table optimization, and more at [dataengineer.wiki/projects](https://dataengineer.wiki/projects/).
+- 🔗 [LinkedIn](https://www.linkedin.com/in/jrlasak/) - Databricks projects and tips
+- 📬 [Substack Newsletter](https://dataengineer.wiki/substack) - Exclusive content for Data Engineers
+- 🌐 [DataEngineer.wiki](http://dataengineer.wiki/) - Training materials and resources
+- 🚀 [More Practice Labs](https://dataengineer.wiki/projects) - Delta Live Tables, table optimization, and more
 
 > **Looking for more info on passing the Databricks Data Engineer Associate Certification exam?**  
 > Check out helpful resources including YouTube videos and official Databricks courses at [dataengineer.wiki/certifications/data-engineer-associate](https://dataengineer.wiki/certifications/data-engineer-associate).
